@@ -1,7 +1,7 @@
 ﻿using Entitas;
 
 [Game]
-public class AsteroidComponent : IComponent
+public sealed class AsteroidComponent : IComponent
 {
     public int Level;
 }

@@ -1,7 +1,7 @@
 ﻿using Entitas;
 using UnityEngine;
 
-public class ReplaceAccelerationSystem : IExecuteSystem
+public sealed class ReplaceAccelerationSystem : IExecuteSystem
 {
     private readonly Contexts _contexts;
 

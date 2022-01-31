@@ -1,8 +1,11 @@
 ﻿using Entitas;
 using UnityEngine;
 
-public class InputSystem : IExecuteSystem
+public sealed class InputSystem : IExecuteSystem
 {
+    private const string HorizontalAxisName = "Horizontal";
+    private const string VerticalAxisName = "Vertical";
+    
     private readonly Contexts _contexts;
 
     public InputSystem(Contexts contexts)
@@ -12,8 +15,8 @@ public class InputSystem : IExecuteSystem
 
     public void Execute()
     {
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
+        float horizontal = Input.GetAxisRaw(HorizontalAxisName);
+        float vertical = Input.GetAxisRaw(VerticalAxisName);
         
         _contexts.input.ReplaceInput(new Vector3(horizontal, vertical, 0f));
     }

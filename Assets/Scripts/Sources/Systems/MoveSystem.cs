@@ -1,7 +1,7 @@
 ﻿using Entitas;
 using UnityEngine;
 
-public class MoveSystem : IExecuteSystem
+public sealed class MoveSystem : IExecuteSystem
 {
     private readonly Contexts _contexts;
     private readonly IGroup<GameEntity> _group;

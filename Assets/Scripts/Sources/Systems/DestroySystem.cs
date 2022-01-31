@@ -3,7 +3,7 @@ using Entitas;
 using Entitas.Unity;
 using UnityEngine;
 
-public class DestroySystem : ReactiveSystem<GameEntity>
+public sealed class DestroySystem : ReactiveSystem<GameEntity>
 {
     private readonly Contexts _contexts;
     
@@ -14,12 +14,12 @@ public class DestroySystem : ReactiveSystem<GameEntity>
 
     protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
     {
-        return context.CreateCollector(GameMatcher.Destroy);
+        return context.CreateCollector(GameMatcher.Destroyed);
     }
 
     protected override bool Filter(GameEntity entity)
     {
-        return entity.isDestroy;
+        return entity.isDestroyed;
     }
 
     protected override void Execute(List<GameEntity> entities)

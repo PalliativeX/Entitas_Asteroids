@@ -3,7 +3,7 @@ using Entitas;
 using Entitas.Unity;
 using UnityEngine;
 
-public class InstantiateViewSystem : ReactiveSystem<GameEntity>
+public sealed class InstantiateViewSystem : ReactiveSystem<GameEntity>
 {
     private readonly Contexts _contexts;
     

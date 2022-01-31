@@ -14,10 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 8833596967636661659, guid: d575da60a4c98a542a53a16c8a4b9bc0, type: 3}
   Laser: {fileID: 3110959862617017206, guid: 19213729c5cf25a4391d3ec44a773049, type: 3}
+  HitParticleEffect: {fileID: 7727226348517645361, guid: 098234864286eb74c94a12b2b9afd80c, type: 3}
   RotationSpeed: 180
   PlayerMovementSpeed: 5
   LaserSpeed: 10
   AsteroidSpeed: 0.3
+  AsteroidHitVfxLifetime: 2
   Bigs:
   - {fileID: 8905995721674044532, guid: 8ab7edd1d6a100146bf20a80a1e80491, type: 3}
   - {fileID: 5833003232212291702, guid: c6677ad6218960b4bbffc1649968f32e, type: 3}

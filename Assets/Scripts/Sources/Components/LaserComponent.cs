@@ -1,6 +1,6 @@
 ﻿using Entitas;
 
 [Game]
-public class LaserComponent : IComponent
+public sealed class LaserComponent : IComponent
 {
 }

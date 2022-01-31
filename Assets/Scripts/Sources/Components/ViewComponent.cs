@@ -3,7 +3,7 @@ using Entitas.CodeGeneration.Attributes;
 using UnityEngine;
 
 [Game]
-public class ViewComponent : IComponent
+public sealed class ViewComponent : IComponent
 {
     [EntityIndex]
     public GameObject Value;

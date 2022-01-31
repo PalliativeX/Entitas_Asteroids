@@ -1,7 +1,7 @@
 ﻿using Entitas;
 using UnityEngine;
 
-public class RotatePlayerSystem : IExecuteSystem
+public sealed class RotatePlayerSystem : IExecuteSystem
 {
     private readonly Contexts _contexts;
 

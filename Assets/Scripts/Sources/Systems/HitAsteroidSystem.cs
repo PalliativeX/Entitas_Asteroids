@@ -3,7 +3,7 @@ using Entitas;
 using Entitas.Unity;
 using UnityEngine;
 
-public class HitAsteroidSystem : ReactiveSystem<GameEntity>
+public sealed class HitAsteroidSystem : ReactiveSystem<GameEntity>
 {
     private readonly Contexts _contexts;
     
@@ -43,8 +43,8 @@ public class HitAsteroidSystem : ReactiveSystem<GameEntity>
                 }
             }
 
-            firstEntity.isDestroy = true;
-            secondEntity.isDestroy = true;
+            firstEntity.isDestroyed = true;
+            secondEntity.isDestroyed = true;
         }
     }
 }

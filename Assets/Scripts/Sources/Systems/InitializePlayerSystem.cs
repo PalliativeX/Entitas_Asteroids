@@ -1,7 +1,7 @@
 ﻿using Entitas;
 using UnityEngine;
 
-public class InitializePlayerSystem : IInitializeSystem
+public sealed class InitializePlayerSystem : IInitializeSystem
 {
     private readonly Contexts _contexts;
 

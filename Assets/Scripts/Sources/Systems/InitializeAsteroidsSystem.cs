@@ -1,7 +1,7 @@
 ﻿using Entitas;
 using UnityEngine;
 
-public class InitializeAsteroidsSystem : IInitializeSystem
+public sealed class InitializeAsteroidsSystem : IInitializeSystem
 {
     private readonly Contexts _contexts;
 
@@ -16,7 +16,7 @@ public class InitializeAsteroidsSystem : IInitializeSystem
         {
             GameEntity entity = _contexts.game.CreateEntity();
             entity.AddAsteroid(3);
-            entity.AddInitialPosition(new Vector3(Random.Range(-3f, 3f), Random.Range(-3f, 3f), 0f));
+            entity.AddInitialPosition(new Vector3(Random.Range(-4f, 4f), Random.Range(-3f, 3f), 0f));
         }
     }
 }

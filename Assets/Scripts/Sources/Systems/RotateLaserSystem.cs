@@ -2,7 +2,7 @@
 using Entitas;
 using UnityEngine;
 
-public class RotateLaserSystem : ReactiveSystem<GameEntity>
+public sealed class RotateLaserSystem : ReactiveSystem<GameEntity>
 {
     private readonly Contexts _contexts;
     

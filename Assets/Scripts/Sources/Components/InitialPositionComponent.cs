@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [Game]
-public class InitialPositionComponent : IComponent
+public sealed class InitialPositionComponent : IComponent
 {
     public Vector3 Value;
 }

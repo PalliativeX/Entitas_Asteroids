@@ -1,7 +1,7 @@
 ﻿using Entitas;
 using UnityEngine;
 
-public class ShootSystem : IExecuteSystem
+public sealed class ShootSystem : IExecuteSystem
 {
     private const string FireButtonKey = "Fire";
     
@@ -14,7 +14,7 @@ public class ShootSystem : IExecuteSystem
 
     public void Execute()
     {
-        if (Input.GetButtonDown(FireButtonKey))
+        if (Input.GetButtonDown(FireButtonKey) && !_contexts.game.pause.Paused)
         {
             GameEntity entity = _contexts.game.CreateEntity();
             GameSetup setup = _contexts.game.gameSetup.value;

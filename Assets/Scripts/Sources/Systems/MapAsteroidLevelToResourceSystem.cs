@@ -2,7 +2,7 @@
 using Entitas;
 using UnityEngine;
 
-public class MapAsteroidLevelToResourceSystem : ReactiveSystem<GameEntity>
+public sealed class MapAsteroidLevelToResourceSystem : ReactiveSystem<GameEntity>
 {
     private readonly Contexts _contexts;
     
