@@ -2,7 +2,6 @@
 using System.Linq;
 using UnityEngine;
 
-
 public static class CollectionExtensions
 {
     public static void ForEach<T>(this T[] array, System.Action<T> callback) where T : Component

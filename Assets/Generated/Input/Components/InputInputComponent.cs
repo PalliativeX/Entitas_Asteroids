@@ -6,13 +6,13 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public partial class GameContext {
+public partial class InputContext {
 
-    public GameEntity inputEntity { get { return GetGroup(GameMatcher.Input).GetSingleEntity(); } }
+    public InputEntity inputEntity { get { return GetGroup(InputMatcher.Input).GetSingleEntity(); } }
     public InputComponent input { get { return inputEntity.input; } }
     public bool hasInput { get { return inputEntity != null; } }
 
-    public GameEntity SetInput(UnityEngine.Vector3 newValue) {
+    public InputEntity SetInput(UnityEngine.Vector3 newValue) {
         if (hasInput) {
             throw new Entitas.EntitasException("Could not set Input!\n" + this + " already has an entity with InputComponent!",
                 "You should check if the context already has a inputEntity before setting it or use context.ReplaceInput().");
@@ -44,27 +44,27 @@ public partial class GameContext {
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public partial class GameEntity {
+public partial class InputEntity {
 
-    public InputComponent input { get { return (InputComponent)GetComponent(GameComponentsLookup.Input); } }
-    public bool hasInput { get { return HasComponent(GameComponentsLookup.Input); } }
+    public InputComponent input { get { return (InputComponent)GetComponent(InputComponentsLookup.Input); } }
+    public bool hasInput { get { return HasComponent(InputComponentsLookup.Input); } }
 
     public void AddInput(UnityEngine.Vector3 newValue) {
-        var index = GameComponentsLookup.Input;
+        var index = InputComponentsLookup.Input;
         var component = (InputComponent)CreateComponent(index, typeof(InputComponent));
         component.Value = newValue;
         AddComponent(index, component);
     }
 
     public void ReplaceInput(UnityEngine.Vector3 newValue) {
-        var index = GameComponentsLookup.Input;
+        var index = InputComponentsLookup.Input;
         var component = (InputComponent)CreateComponent(index, typeof(InputComponent));
         component.Value = newValue;
         ReplaceComponent(index, component);
     }
 
     public void RemoveInput() {
-        RemoveComponent(GameComponentsLookup.Input);
+        RemoveComponent(InputComponentsLookup.Input);
     }
 }
 
@@ -76,15 +76,15 @@ public partial class GameEntity {
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public sealed partial class GameMatcher {
+public sealed partial class InputMatcher {
 
-    static Entitas.IMatcher<GameEntity> _matcherInput;
+    static Entitas.IMatcher<InputEntity> _matcherInput;
 
-    public static Entitas.IMatcher<GameEntity> Input {
+    public static Entitas.IMatcher<InputEntity> Input {
         get {
             if (_matcherInput == null) {
-                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.Input);
-                matcher.componentNames = GameComponentsLookup.componentNames;
+                var matcher = (Entitas.Matcher<InputEntity>)Entitas.Matcher<InputEntity>.AllOf(InputComponentsLookup.Input);
+                matcher.componentNames = InputComponentsLookup.componentNames;
                 _matcherInput = matcher;
             }
 

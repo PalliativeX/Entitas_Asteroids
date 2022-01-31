@@ -3,7 +3,9 @@ using UnityEngine;
 
 public class ShootSystem : IExecuteSystem
 {
-    private Contexts _contexts;
+    private const string FireButtonKey = "Fire";
+    
+    private readonly Contexts _contexts;
 
     public ShootSystem(Contexts contexts)
     {
@@ -12,7 +14,7 @@ public class ShootSystem : IExecuteSystem
 
     public void Execute()
     {
-        if (Input.GetButtonDown("Fire"))
+        if (Input.GetButtonDown(FireButtonKey))
         {
             GameEntity entity = _contexts.game.CreateEntity();
             GameSetup setup = _contexts.game.gameSetup.value;

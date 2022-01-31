@@ -1,4 +1,4 @@
-﻿using Entitas.CodeGeneration.Attributes;
+﻿ using Entitas.CodeGeneration.Attributes;
 using UnityEngine;
 
 [Game, Unique]

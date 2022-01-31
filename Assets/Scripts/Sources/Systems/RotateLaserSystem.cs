@@ -5,8 +5,7 @@ using UnityEngine;
 public class RotateLaserSystem : ReactiveSystem<GameEntity>
 {
     private readonly Contexts _contexts;
-
-
+    
     public RotateLaserSystem(Contexts contexts) : base(contexts.game)
     {
         _contexts = contexts;

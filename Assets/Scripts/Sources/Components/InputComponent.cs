@@ -2,7 +2,7 @@
 using Entitas.CodeGeneration.Attributes;
 using UnityEngine;
 
-[Game, Unique]
+[Input, Unique]
 public class InputComponent : IComponent
 {
     public Vector3 Value;

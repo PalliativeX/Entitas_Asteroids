@@ -15,6 +15,6 @@ public class InputSystem : IExecuteSystem
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         
-        _contexts.game.ReplaceInput(new Vector3(horizontal, vertical, 0f));
+        _contexts.input.ReplaceInput(new Vector3(horizontal, vertical, 0f));
     }
 }
