@@ -8,7 +8,7 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    static readonly DestroyedComponent destroyedComponent = new DestroyedComponent();
+    static readonly Sources.Components.DestroyedComponent destroyedComponent = new Sources.Components.DestroyedComponent();
 
     public bool isDestroyed {
         get { return HasComponent(GameComponentsLookup.Destroyed); }

@@ -1,31 +1,35 @@
-﻿using Entitas;
+﻿using Configs;
+using Entitas;
 using UnityEngine;
 
-public sealed class ShootSystem : IExecuteSystem
+namespace Sources.Systems
 {
-    private const string FireButtonKey = "Fire";
+    public sealed class ShootSystem : IExecuteSystem
+    {
+        private const string FireButtonKey = "Fire";
     
-    private readonly Contexts _contexts;
+        private readonly Contexts _contexts;
 
-    public ShootSystem(Contexts contexts)
-    {
-        _contexts = contexts;
-    }
-
-    public void Execute()
-    {
-        if (Input.GetButtonDown(FireButtonKey) && !_contexts.game.pause.Paused)
+        public ShootSystem(Contexts contexts)
         {
-            GameEntity entity = _contexts.game.CreateEntity();
-            GameSetup setup = _contexts.game.gameSetup.value;
+            _contexts = contexts;
+        }
 
-            Transform playerTransform = _contexts.game.playerEntity.view.Value.transform;
-            Vector3 playerForward = playerTransform.up;
+        public void Execute()
+        {
+            if (_contexts.input.input.ShootPressed && !_contexts.game.pause.Paused)
+            {
+                GameEntity entity = _contexts.game.CreateEntity();
+                GameSetup setup = _contexts.game.gameSetup.value;
+
+                Transform playerTransform = _contexts.game.playerEntity.view.Value.transform;
+                Vector3 playerForward = playerTransform.up;
             
-            entity.AddResource(_contexts.game.gameSetup.value.Laser);
-            entity.AddAcceleration(playerForward * setup.LaserSpeed);
-            entity.AddInitialPosition(playerTransform.position);
-            entity.isLaser = true;
+                entity.AddResource(_contexts.game.gameSetup.value.Laser);
+                entity.AddAcceleration(playerForward * setup.LaserSpeed);
+                entity.AddInitialPosition(playerTransform.position);
+                entity.isLaser = true;
+            }
         }
     }
 }

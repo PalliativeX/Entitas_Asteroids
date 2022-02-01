@@ -2,8 +2,13 @@
 using Entitas.CodeGeneration.Attributes;
 using UnityEngine;
 
-[Input, Unique]
-public sealed class InputComponent : IComponent
+namespace Sources.Components
 {
-    public Vector3 Value;
+    [Input, Unique]
+    public sealed class InputComponent : IComponent
+    {
+        public Vector3 Movement;
+        public bool ShootPressed;
+        public bool PauseButtonPressed;
+    }
 }

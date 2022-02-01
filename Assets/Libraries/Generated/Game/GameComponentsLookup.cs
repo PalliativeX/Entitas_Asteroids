@@ -8,32 +8,34 @@
 //------------------------------------------------------------------------------
 public static class GameComponentsLookup {
 
-    public const int Acceleration = 0;
-    public const int AnyAccelerationListener = 1;
-    public const int AnyScoreListener = 2;
-    public const int Asteroid = 3;
-    public const int Collision = 4;
-    public const int Destroyed = 5;
-    public const int GameSetup = 6;
-    public const int InitialPosition = 7;
-    public const int Laser = 8;
-    public const int Pause = 9;
-    public const int Player = 10;
-    public const int Resource = 11;
-    public const int Score = 12;
-    public const int Vfx = 13;
-    public const int View = 14;
+    public const int AnyAccelerationListener = 0;
+    public const int AnyScoreListener = 1;
+    public const int GameSetup = 2;
+    public const int Acceleration = 3;
+    public const int Asteroid = 4;
+    public const int Collision = 5;
+    public const int DebugLog = 6;
+    public const int Destroyed = 7;
+    public const int InitialPosition = 8;
+    public const int Laser = 9;
+    public const int Pause = 10;
+    public const int Player = 11;
+    public const int Resource = 12;
+    public const int Score = 13;
+    public const int Vfx = 14;
+    public const int View = 15;
 
-    public const int TotalComponents = 15;
+    public const int TotalComponents = 16;
 
     public static readonly string[] componentNames = {
-        "Acceleration",
         "AnyAccelerationListener",
         "AnyScoreListener",
+        "GameSetup",
+        "Acceleration",
         "Asteroid",
         "Collision",
+        "DebugLog",
         "Destroyed",
-        "GameSetup",
         "InitialPosition",
         "Laser",
         "Pause",
@@ -45,20 +47,21 @@ public static class GameComponentsLookup {
     };
 
     public static readonly System.Type[] componentTypes = {
-        typeof(AccelerationComponent),
         typeof(AnyAccelerationListenerComponent),
         typeof(AnyScoreListenerComponent),
-        typeof(AsteroidComponent),
-        typeof(CollisionComponent),
-        typeof(DestroyedComponent),
         typeof(GameSetupComponent),
-        typeof(InitialPositionComponent),
-        typeof(LaserComponent),
-        typeof(PauseComponent),
-        typeof(PlayerComponent),
-        typeof(ResourceComponent),
-        typeof(ScoreComponent),
-        typeof(VfxComponent),
-        typeof(ViewComponent)
+        typeof(Sources.Components.AccelerationComponent),
+        typeof(Sources.Components.AsteroidComponent),
+        typeof(Sources.Components.CollisionComponent),
+        typeof(Sources.Components.DebugLogComponent),
+        typeof(Sources.Components.DestroyedComponent),
+        typeof(Sources.Components.InitialPositionComponent),
+        typeof(Sources.Components.LaserComponent),
+        typeof(Sources.Components.PauseComponent),
+        typeof(Sources.Components.PlayerComponent),
+        typeof(Sources.Components.ResourceComponent),
+        typeof(Sources.Components.ScoreComponent),
+        typeof(Sources.Components.VfxComponent),
+        typeof(Sources.Components.ViewComponent)
     };
 }

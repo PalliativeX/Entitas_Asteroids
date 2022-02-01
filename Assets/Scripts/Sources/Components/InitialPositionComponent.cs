@@ -1,8 +1,11 @@
 ﻿using Entitas;
 using UnityEngine;
 
-[Game]
-public sealed class InitialPositionComponent : IComponent
+namespace Sources.Components
 {
-    public Vector3 Value;
+    [Game]
+    public sealed class InitialPositionComponent : IComponent
+    {
+        public Vector3 Value;
+    }
 }

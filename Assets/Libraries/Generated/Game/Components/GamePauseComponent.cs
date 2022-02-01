@@ -9,12 +9,12 @@
 public partial class GameContext {
 
     public GameEntity pauseEntity { get { return GetGroup(GameMatcher.Pause).GetSingleEntity(); } }
-    public PauseComponent pause { get { return pauseEntity.pause; } }
+    public Sources.Components.PauseComponent pause { get { return pauseEntity.pause; } }
     public bool hasPause { get { return pauseEntity != null; } }
 
     public GameEntity SetPause(bool newPaused) {
         if (hasPause) {
-            throw new Entitas.EntitasException("Could not set Pause!\n" + this + " already has an entity with PauseComponent!",
+            throw new Entitas.EntitasException("Could not set Pause!\n" + this + " already has an entity with Sources.Components.PauseComponent!",
                 "You should check if the context already has a pauseEntity before setting it or use context.ReplacePause().");
         }
         var entity = CreateEntity();
@@ -46,19 +46,19 @@ public partial class GameContext {
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public PauseComponent pause { get { return (PauseComponent)GetComponent(GameComponentsLookup.Pause); } }
+    public Sources.Components.PauseComponent pause { get { return (Sources.Components.PauseComponent)GetComponent(GameComponentsLookup.Pause); } }
     public bool hasPause { get { return HasComponent(GameComponentsLookup.Pause); } }
 
     public void AddPause(bool newPaused) {
         var index = GameComponentsLookup.Pause;
-        var component = (PauseComponent)CreateComponent(index, typeof(PauseComponent));
+        var component = (Sources.Components.PauseComponent)CreateComponent(index, typeof(Sources.Components.PauseComponent));
         component.Paused = newPaused;
         AddComponent(index, component);
     }
 
     public void ReplacePause(bool newPaused) {
         var index = GameComponentsLookup.Pause;
-        var component = (PauseComponent)CreateComponent(index, typeof(PauseComponent));
+        var component = (Sources.Components.PauseComponent)CreateComponent(index, typeof(Sources.Components.PauseComponent));
         component.Paused = newPaused;
         ReplaceComponent(index, component);
     }

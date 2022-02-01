@@ -17,6 +17,6 @@ public static class InputComponentsLookup {
     };
 
     public static readonly System.Type[] componentTypes = {
-        typeof(InputComponent)
+        typeof(Sources.Components.InputComponent)
     };
 }

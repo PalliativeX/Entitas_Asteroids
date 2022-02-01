@@ -1,8 +1,11 @@
 ﻿using Entitas;
 using UnityEngine;
 
-[Game]
-public sealed class ResourceComponent : IComponent
+namespace Sources.Components
 {
-    public GameObject Prefab;
+    [Game]
+    public sealed class ResourceComponent : IComponent
+    {
+        public GameObject Prefab;
+    }
 }

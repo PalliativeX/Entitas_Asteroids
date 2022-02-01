@@ -8,12 +8,12 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public CollisionComponent collision { get { return (CollisionComponent)GetComponent(GameComponentsLookup.Collision); } }
+    public Sources.Components.CollisionComponent collision { get { return (Sources.Components.CollisionComponent)GetComponent(GameComponentsLookup.Collision); } }
     public bool hasCollision { get { return HasComponent(GameComponentsLookup.Collision); } }
 
     public void AddCollision(UnityEngine.GameObject newFirst, UnityEngine.GameObject newSecond) {
         var index = GameComponentsLookup.Collision;
-        var component = (CollisionComponent)CreateComponent(index, typeof(CollisionComponent));
+        var component = (Sources.Components.CollisionComponent)CreateComponent(index, typeof(Sources.Components.CollisionComponent));
         component.First = newFirst;
         component.Second = newSecond;
         AddComponent(index, component);
@@ -21,7 +21,7 @@ public partial class GameEntity {
 
     public void ReplaceCollision(UnityEngine.GameObject newFirst, UnityEngine.GameObject newSecond) {
         var index = GameComponentsLookup.Collision;
-        var component = (CollisionComponent)CreateComponent(index, typeof(CollisionComponent));
+        var component = (Sources.Components.CollisionComponent)CreateComponent(index, typeof(Sources.Components.CollisionComponent));
         component.First = newFirst;
         component.Second = newSecond;
         ReplaceComponent(index, component);

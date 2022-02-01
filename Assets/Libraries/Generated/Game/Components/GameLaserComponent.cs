@@ -8,7 +8,7 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    static readonly LaserComponent laserComponent = new LaserComponent();
+    static readonly Sources.Components.LaserComponent laserComponent = new Sources.Components.LaserComponent();
 
     public bool isLaser {
         get { return HasComponent(GameComponentsLookup.Laser); }

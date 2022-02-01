@@ -8,19 +8,19 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public AsteroidComponent asteroid { get { return (AsteroidComponent)GetComponent(GameComponentsLookup.Asteroid); } }
+    public Sources.Components.AsteroidComponent asteroid { get { return (Sources.Components.AsteroidComponent)GetComponent(GameComponentsLookup.Asteroid); } }
     public bool hasAsteroid { get { return HasComponent(GameComponentsLookup.Asteroid); } }
 
     public void AddAsteroid(int newLevel) {
         var index = GameComponentsLookup.Asteroid;
-        var component = (AsteroidComponent)CreateComponent(index, typeof(AsteroidComponent));
+        var component = (Sources.Components.AsteroidComponent)CreateComponent(index, typeof(Sources.Components.AsteroidComponent));
         component.Level = newLevel;
         AddComponent(index, component);
     }
 
     public void ReplaceAsteroid(int newLevel) {
         var index = GameComponentsLookup.Asteroid;
-        var component = (AsteroidComponent)CreateComponent(index, typeof(AsteroidComponent));
+        var component = (Sources.Components.AsteroidComponent)CreateComponent(index, typeof(Sources.Components.AsteroidComponent));
         component.Level = newLevel;
         ReplaceComponent(index, component);
     }

@@ -8,19 +8,19 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public ResourceComponent resource { get { return (ResourceComponent)GetComponent(GameComponentsLookup.Resource); } }
+    public Sources.Components.ResourceComponent resource { get { return (Sources.Components.ResourceComponent)GetComponent(GameComponentsLookup.Resource); } }
     public bool hasResource { get { return HasComponent(GameComponentsLookup.Resource); } }
 
     public void AddResource(UnityEngine.GameObject newPrefab) {
         var index = GameComponentsLookup.Resource;
-        var component = (ResourceComponent)CreateComponent(index, typeof(ResourceComponent));
+        var component = (Sources.Components.ResourceComponent)CreateComponent(index, typeof(Sources.Components.ResourceComponent));
         component.Prefab = newPrefab;
         AddComponent(index, component);
     }
 
     public void ReplaceResource(UnityEngine.GameObject newPrefab) {
         var index = GameComponentsLookup.Resource;
-        var component = (ResourceComponent)CreateComponent(index, typeof(ResourceComponent));
+        var component = (Sources.Components.ResourceComponent)CreateComponent(index, typeof(Sources.Components.ResourceComponent));
         component.Prefab = newPrefab;
         ReplaceComponent(index, component);
     }

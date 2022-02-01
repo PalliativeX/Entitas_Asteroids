@@ -9,12 +9,12 @@
 public partial class GameContext {
 
     public GameEntity scoreEntity { get { return GetGroup(GameMatcher.Score).GetSingleEntity(); } }
-    public ScoreComponent score { get { return scoreEntity.score; } }
+    public Sources.Components.ScoreComponent score { get { return scoreEntity.score; } }
     public bool hasScore { get { return scoreEntity != null; } }
 
     public GameEntity SetScore(int newValue) {
         if (hasScore) {
-            throw new Entitas.EntitasException("Could not set Score!\n" + this + " already has an entity with ScoreComponent!",
+            throw new Entitas.EntitasException("Could not set Score!\n" + this + " already has an entity with Sources.Components.ScoreComponent!",
                 "You should check if the context already has a scoreEntity before setting it or use context.ReplaceScore().");
         }
         var entity = CreateEntity();
@@ -46,19 +46,19 @@ public partial class GameContext {
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public ScoreComponent score { get { return (ScoreComponent)GetComponent(GameComponentsLookup.Score); } }
+    public Sources.Components.ScoreComponent score { get { return (Sources.Components.ScoreComponent)GetComponent(GameComponentsLookup.Score); } }
     public bool hasScore { get { return HasComponent(GameComponentsLookup.Score); } }
 
     public void AddScore(int newValue) {
         var index = GameComponentsLookup.Score;
-        var component = (ScoreComponent)CreateComponent(index, typeof(ScoreComponent));
+        var component = (Sources.Components.ScoreComponent)CreateComponent(index, typeof(Sources.Components.ScoreComponent));
         component.Value = newValue;
         AddComponent(index, component);
     }
 
     public void ReplaceScore(int newValue) {
         var index = GameComponentsLookup.Score;
-        var component = (ScoreComponent)CreateComponent(index, typeof(ScoreComponent));
+        var component = (Sources.Components.ScoreComponent)CreateComponent(index, typeof(Sources.Components.ScoreComponent));
         component.Value = newValue;
         ReplaceComponent(index, component);
     }

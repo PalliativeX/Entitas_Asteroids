@@ -2,34 +2,37 @@
 using Entitas;
 using UnityEngine;
 
-public sealed class RotateLaserSystem : ReactiveSystem<GameEntity>
+namespace Sources.Systems
 {
-    private readonly Contexts _contexts;
+    public sealed class RotateLaserSystem : ReactiveSystem<GameEntity>
+    {
+        private readonly Contexts _contexts;
     
-    public RotateLaserSystem(Contexts contexts) : base(contexts.game)
-    {
-        _contexts = contexts;
-    }
-
-    protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
-    {
-        return context.CreateCollector(GameMatcher.AllOf(
-            GameMatcher.View, GameMatcher.Laser, GameMatcher.Acceleration));
-    }
-
-    protected override bool Filter(GameEntity entity)
-    {
-        return entity.hasView && entity.isLaser && entity.hasAcceleration;
-    }
-
-    protected override void Execute(List<GameEntity> entities)
-    {
-        foreach (GameEntity entity in entities)
+        public RotateLaserSystem(Contexts contexts) : base(contexts.game)
         {
-            Transform view = entity.view.Value.transform;
-            Vector3 acceleration = entity.acceleration.Value;
+            _contexts = contexts;
+        }
 
-            view.transform.up = acceleration.normalized;
+        protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
+        {
+            return context.CreateCollector(GameMatcher.AllOf(
+                GameMatcher.View, GameMatcher.Laser, GameMatcher.Acceleration));
+        }
+
+        protected override bool Filter(GameEntity entity)
+        {
+            return entity.hasView && entity.isLaser && entity.hasAcceleration;
+        }
+
+        protected override void Execute(List<GameEntity> entities)
+        {
+            foreach (GameEntity entity in entities)
+            {
+                Transform view = entity.view.Value.transform;
+                Vector3 acceleration = entity.acceleration.Value;
+
+                view.transform.up = acceleration.normalized;
+            }
         }
     }
 }

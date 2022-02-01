@@ -1,6 +1,9 @@
 ﻿using Entitas;
 
-[Game]
-public sealed class LaserComponent : IComponent
+namespace Sources.Components
 {
+    [Game]
+    public sealed class LaserComponent : IComponent
+    {
+    }
 }

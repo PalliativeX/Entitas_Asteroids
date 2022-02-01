@@ -1,33 +1,40 @@
-﻿using Entitas;
+﻿using Sources.Systems.InputLogic;
+using Sources.Systems.Logging;
+using Sources.Systems.Vfx;
 
-public sealed class GameSystems : Feature
+namespace Sources.Systems
 {
-    public GameSystems(Contexts contexts)
+    public sealed class GameSystems : Feature
     {
-        Add(new InitializePlayerSystem(contexts));
-        Add(new InstantiateViewSystem(contexts));
-        Add(new InitializeAsteroidsSystem(contexts));
-        Add(new InitializePauseSystem(contexts));
+        public GameSystems(Contexts contexts, ILogService logService, IInputService inputService)
+        {
+            Add(new InitializePlayerSystem(contexts));
+            Add(new InstantiateViewSystem(contexts));
+            Add(new InitializeAsteroidsSystem(contexts));
+            Add(new InitializePauseSystem(contexts));
 
-        Add(new ScoreSystem(contexts));
+            Add(new HandleDebugLogMessageSystem(contexts, logService));
 
-        Add(new GameEventSystems(contexts));
+            Add(new ScoreSystem(contexts));
 
-        Add(new RotateLaserSystem(contexts));
+            Add(new GameEventSystems(contexts));
 
-        Add(new PauseSystem(contexts));
-        Add(new InputSystem(contexts));
-        Add(new ShootSystem(contexts));
+            Add(new RotateLaserSystem(contexts));
 
-        Add(new RotatePlayerSystem(contexts));
-        Add(new ReplaceAccelerationSystem(contexts));
-        Add(new MapAsteroidLevelToResourceSystem(contexts));
-        Add(new HitAsteroidSystem(contexts));
-        Add(new AsteroidHitVfxInstantiateSystem(contexts));
-        Add(new VfxUpdateLifetimeSystem(contexts));
+            Add(new PauseSystem(contexts));
+            Add(new InputSystem(contexts, inputService));
+            Add(new ShootSystem(contexts));
 
-        Add(new MoveSystem(contexts));
+            Add(new RotatePlayerSystem(contexts));
+            Add(new ReplaceAccelerationSystem(contexts));
+            Add(new MapAsteroidLevelToResourceSystem(contexts));
+            Add(new HitAsteroidSystem(contexts));
+            Add(new AsteroidHitVfxInstantiateSystem(contexts));
+            Add(new VfxUpdateLifetimeSystem(contexts));
 
-        Add(new DestroySystem(contexts));
+            Add(new MoveSystem(contexts));
+
+            Add(new DestroySystem(contexts));
+        }
     }
 }

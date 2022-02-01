@@ -8,19 +8,19 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public ViewComponent view { get { return (ViewComponent)GetComponent(GameComponentsLookup.View); } }
+    public Sources.Components.ViewComponent view { get { return (Sources.Components.ViewComponent)GetComponent(GameComponentsLookup.View); } }
     public bool hasView { get { return HasComponent(GameComponentsLookup.View); } }
 
     public void AddView(UnityEngine.GameObject newValue) {
         var index = GameComponentsLookup.View;
-        var component = (ViewComponent)CreateComponent(index, typeof(ViewComponent));
+        var component = (Sources.Components.ViewComponent)CreateComponent(index, typeof(Sources.Components.ViewComponent));
         component.Value = newValue;
         AddComponent(index, component);
     }
 
     public void ReplaceView(UnityEngine.GameObject newValue) {
         var index = GameComponentsLookup.View;
-        var component = (ViewComponent)CreateComponent(index, typeof(ViewComponent));
+        var component = (Sources.Components.ViewComponent)CreateComponent(index, typeof(Sources.Components.ViewComponent));
         component.Value = newValue;
         ReplaceComponent(index, component);
     }

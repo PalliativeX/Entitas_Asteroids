@@ -1,7 +1,7 @@
 ﻿using TMPro;
 using UnityEngine;
 
-namespace Unity.UI
+namespace Views.UI
 {
     public class ScoreLabelController : MonoBehaviour, IAnyScoreListener
     {

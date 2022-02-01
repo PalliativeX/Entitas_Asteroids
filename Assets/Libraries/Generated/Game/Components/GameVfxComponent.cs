@@ -8,19 +8,19 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public VfxComponent vfx { get { return (VfxComponent)GetComponent(GameComponentsLookup.Vfx); } }
+    public Sources.Components.VfxComponent vfx { get { return (Sources.Components.VfxComponent)GetComponent(GameComponentsLookup.Vfx); } }
     public bool hasVfx { get { return HasComponent(GameComponentsLookup.Vfx); } }
 
     public void AddVfx(float newDurationLeft) {
         var index = GameComponentsLookup.Vfx;
-        var component = (VfxComponent)CreateComponent(index, typeof(VfxComponent));
+        var component = (Sources.Components.VfxComponent)CreateComponent(index, typeof(Sources.Components.VfxComponent));
         component.DurationLeft = newDurationLeft;
         AddComponent(index, component);
     }
 
     public void ReplaceVfx(float newDurationLeft) {
         var index = GameComponentsLookup.Vfx;
-        var component = (VfxComponent)CreateComponent(index, typeof(VfxComponent));
+        var component = (Sources.Components.VfxComponent)CreateComponent(index, typeof(Sources.Components.VfxComponent));
         component.DurationLeft = newDurationLeft;
         ReplaceComponent(index, component);
     }

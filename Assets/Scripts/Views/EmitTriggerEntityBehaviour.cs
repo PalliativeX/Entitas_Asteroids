@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Unity
+namespace Views
 {
     public class EmitTriggerEntityBehaviour : MonoBehaviour
     {

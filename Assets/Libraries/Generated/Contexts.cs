@@ -21,12 +21,14 @@ public partial class Contexts : Entitas.IContexts {
 
     static Contexts _sharedInstance;
 
+    public DebugContext debug { get; set; }
     public GameContext game { get; set; }
     public InputContext input { get; set; }
 
-    public Entitas.IContext[] allContexts { get { return new Entitas.IContext [] { game, input }; } }
+    public Entitas.IContext[] allContexts { get { return new Entitas.IContext [] { debug, game, input }; } }
 
     public Contexts() {
+        debug = new DebugContext();
         game = new GameContext();
         input = new InputContext();
 
@@ -65,7 +67,7 @@ public partial class Contexts {
         game.AddEntityIndex(new Entitas.EntityIndex<GameEntity, UnityEngine.GameObject>(
             View,
             game.GetGroup(GameMatcher.View),
-            (e, c) => ((ViewComponent)c).Value));
+            (e, c) => ((Sources.Components.ViewComponent)c).Value));
     }
 }
 
@@ -90,6 +92,7 @@ public partial class Contexts {
     [Entitas.CodeGeneration.Attributes.PostConstructor]
     public void InitializeContextObservers() {
         try {
+            CreateContextObserver(debug);
             CreateContextObserver(game);
             CreateContextObserver(input);
         } catch(System.Exception) {

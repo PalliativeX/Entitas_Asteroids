@@ -1,22 +1,25 @@
 ﻿using Entitas;
 using UnityEngine;
 
-public sealed class InitializeAsteroidsSystem : IInitializeSystem
+namespace Sources.Systems
 {
-    private readonly Contexts _contexts;
-
-    public InitializeAsteroidsSystem(Contexts contexts)
+    public sealed class InitializeAsteroidsSystem : IInitializeSystem
     {
-        _contexts = contexts;
-    }
+        private readonly Contexts _contexts;
 
-    public void Initialize()
-    {
-        for (int i = 0; i < 4; i++)
+        public InitializeAsteroidsSystem(Contexts contexts)
         {
-            GameEntity entity = _contexts.game.CreateEntity();
-            entity.AddAsteroid(3);
-            entity.AddInitialPosition(new Vector3(Random.Range(-4f, 4f), Random.Range(-3f, 3f), 0f));
+            _contexts = contexts;
+        }
+
+        public void Initialize()
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                GameEntity entity = _contexts.game.CreateEntity();
+                entity.AddAsteroid(3);
+                entity.AddInitialPosition(new Vector3(Random.Range(-4f, 4f), Random.Range(-3f, 3f), 0f));
+            }
         }
     }
 }

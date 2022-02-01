@@ -1,7 +1,10 @@
 ﻿using Entitas;
 
-[Game]
-public sealed class VfxComponent : IComponent
+namespace Sources.Components
 {
-    public float DurationLeft;
+    [Game]
+    public sealed class VfxComponent : IComponent
+    {
+        public float DurationLeft;
+    }
 }

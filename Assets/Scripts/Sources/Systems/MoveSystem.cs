@@ -1,29 +1,32 @@
 ﻿using Entitas;
 using UnityEngine;
 
-public sealed class MoveSystem : IExecuteSystem
+namespace Sources.Systems
 {
-    private readonly Contexts _contexts;
-    private readonly IGroup<GameEntity> _group;
-
-    public MoveSystem(Contexts contexts)
+    public sealed class MoveSystem : IExecuteSystem
     {
-        _contexts = contexts;
-        _group = contexts.game.GetGroup(
-            GameMatcher.AllOf(GameMatcher.Acceleration, GameMatcher.View));
-    }
+        private readonly Contexts _contexts;
+        private readonly IGroup<GameEntity> _group;
 
-    public void Execute()
-    {
-        foreach (GameEntity entity in _group)
+        public MoveSystem(Contexts contexts)
         {
-            GameObject view = entity.view.Value;
-            Vector3 acceleration = entity.acceleration.Value;
-            Vector3 position = view.transform.position;
+            _contexts = contexts;
+            _group = contexts.game.GetGroup(
+                GameMatcher.AllOf(GameMatcher.Acceleration, GameMatcher.View));
+        }
 
-            position += acceleration * Time.deltaTime;
+        public void Execute()
+        {
+            foreach (GameEntity entity in _group)
+            {
+                GameObject view = entity.view.Value;
+                Vector3 acceleration = entity.acceleration.Value;
+                Vector3 position = view.transform.position;
 
-            view.transform.position = position;
+                position += acceleration * Time.deltaTime;
+
+                view.transform.position = position;
+            }
         }
     }
 }

@@ -1,26 +1,33 @@
+using Configs;
 using Entitas;
+using Sources.Systems;
+using Sources.Systems.InputLogic;
+using Sources.Systems.Logging;
 using UnityEngine;
 
-public class GameController : MonoBehaviour
+namespace Views
 {
-    public GameSetup GameSetup;
-    
-    private Systems _systems;
-    
-    private void Start()
+    public class GameController : MonoBehaviour
     {
-        Contexts contexts = Contexts.sharedInstance;
+        public GameSetup GameSetup;
+    
+        private Systems _systems;
+    
+        private void Start()
+        {
+            Contexts contexts = Contexts.sharedInstance;
 
-        contexts.game.SetGameSetup(GameSetup);
+            contexts.game.SetGameSetup(GameSetup);
         
-        _systems = new GameSystems(contexts);
+            _systems = new GameSystems(contexts, new UnityDebugLogService(), new UnityInputService());
         
-        _systems.Initialize();
-    }
+            _systems.Initialize();
+        }
 
-    private void Update()
-    {
-        _systems.Execute();
-        _systems.Cleanup();
+        private void Update()
+        {
+            _systems.Execute();
+            _systems.Cleanup();
+        }
     }
 }

@@ -2,9 +2,12 @@
 using Entitas.CodeGeneration.Attributes;
 using UnityEngine;
 
-[Game]
-public sealed class ViewComponent : IComponent
+namespace Sources.Components
 {
-    [EntityIndex]
-    public GameObject Value;
+    [Game]
+    public sealed class ViewComponent : IComponent
+    {
+        [EntityIndex]
+        public GameObject Value;
+    }
 }

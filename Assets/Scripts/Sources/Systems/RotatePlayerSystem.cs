@@ -1,21 +1,24 @@
 ﻿using Entitas;
 using UnityEngine;
 
-public sealed class RotatePlayerSystem : IExecuteSystem
+namespace Sources.Systems
 {
-    private readonly Contexts _contexts;
-
-    public RotatePlayerSystem(Contexts contexts)
+    public sealed class RotatePlayerSystem : IExecuteSystem
     {
-        _contexts = contexts;
-    }
+        private readonly Contexts _contexts;
 
-    public void Execute()
-    {
-        float input = _contexts.input.input.Value.x;
-        Transform playerTransform = _contexts.game.playerEntity.view.Value.transform;
-        Vector3 playerRotation = playerTransform.rotation.eulerAngles;
-        playerRotation.z -= input * _contexts.game.gameSetup.value.RotationSpeed * Time.deltaTime;
-        playerTransform.rotation = Quaternion.Euler(playerRotation);
+        public RotatePlayerSystem(Contexts contexts)
+        {
+            _contexts = contexts;
+        }
+
+        public void Execute()
+        {
+            float input = _contexts.input.input.Movement.x;
+            Transform playerTransform = _contexts.game.playerEntity.view.Value.transform;
+            Vector3 playerRotation = playerTransform.rotation.eulerAngles;
+            playerRotation.z -= input * _contexts.game.gameSetup.value.RotationSpeed * Time.deltaTime;
+            playerTransform.rotation = Quaternion.Euler(playerRotation);
+        }
     }
 }

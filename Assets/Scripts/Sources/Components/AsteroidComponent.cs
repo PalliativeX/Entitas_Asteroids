@@ -1,7 +1,10 @@
 ﻿using Entitas;
 
-[Game]
-public sealed class AsteroidComponent : IComponent
+namespace Sources.Components
 {
-    public int Level;
+    [Game]
+    public sealed class AsteroidComponent : IComponent
+    {
+        public int Level;
+    }
 }

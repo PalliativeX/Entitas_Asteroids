@@ -2,34 +2,37 @@
 using Entitas;
 using UnityEngine;
 
-public sealed class VfxUpdateLifetimeSystem : ReactiveSystem<GameEntity>
+namespace Sources.Systems.Vfx
 {
-    private readonly Contexts _contexts;
-
-    public VfxUpdateLifetimeSystem(Contexts contexts) : base(contexts.game)
+    public sealed class VfxUpdateLifetimeSystem : ReactiveSystem<GameEntity>
     {
-        _contexts = contexts;
-    }
+        private readonly Contexts _contexts;
 
-    protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
-    {
-        return context.CreateCollector(GameMatcher.Vfx);
-    }
-
-    protected override bool Filter(GameEntity entity)
-    {
-        return entity.hasVfx;
-    }
-
-    protected override void Execute(List<GameEntity> entities)
-    {
-        foreach (GameEntity entity in entities)
+        public VfxUpdateLifetimeSystem(Contexts contexts) : base(contexts.game)
         {
-            float newLifetimeLeft = entity.vfx.DurationLeft - Time.deltaTime;
-            entity.ReplaceVfx(newLifetimeLeft);
+            _contexts = contexts;
+        }
 
-            if (newLifetimeLeft <= 0f)
-                entity.isDestroyed = true;
+        protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
+        {
+            return context.CreateCollector(GameMatcher.Vfx);
+        }
+
+        protected override bool Filter(GameEntity entity)
+        {
+            return entity.hasVfx;
+        }
+
+        protected override void Execute(List<GameEntity> entities)
+        {
+            foreach (GameEntity entity in entities)
+            {
+                float newLifetimeLeft = entity.vfx.DurationLeft - Time.deltaTime;
+                entity.ReplaceVfx(newLifetimeLeft);
+
+                if (newLifetimeLeft <= 0f)
+                    entity.isDestroyed = true;
+            }
         }
     }
 }

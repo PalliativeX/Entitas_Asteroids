@@ -9,25 +9,25 @@
 public partial class InputContext {
 
     public InputEntity inputEntity { get { return GetGroup(InputMatcher.Input).GetSingleEntity(); } }
-    public InputComponent input { get { return inputEntity.input; } }
+    public Sources.Components.InputComponent input { get { return inputEntity.input; } }
     public bool hasInput { get { return inputEntity != null; } }
 
-    public InputEntity SetInput(UnityEngine.Vector3 newValue) {
+    public InputEntity SetInput(UnityEngine.Vector3 newMovement, bool newShootPressed, bool newPauseButtonPressed) {
         if (hasInput) {
-            throw new Entitas.EntitasException("Could not set Input!\n" + this + " already has an entity with InputComponent!",
+            throw new Entitas.EntitasException("Could not set Input!\n" + this + " already has an entity with Sources.Components.InputComponent!",
                 "You should check if the context already has a inputEntity before setting it or use context.ReplaceInput().");
         }
         var entity = CreateEntity();
-        entity.AddInput(newValue);
+        entity.AddInput(newMovement, newShootPressed, newPauseButtonPressed);
         return entity;
     }
 
-    public void ReplaceInput(UnityEngine.Vector3 newValue) {
+    public void ReplaceInput(UnityEngine.Vector3 newMovement, bool newShootPressed, bool newPauseButtonPressed) {
         var entity = inputEntity;
         if (entity == null) {
-            entity = SetInput(newValue);
+            entity = SetInput(newMovement, newShootPressed, newPauseButtonPressed);
         } else {
-            entity.ReplaceInput(newValue);
+            entity.ReplaceInput(newMovement, newShootPressed, newPauseButtonPressed);
         }
     }
 
@@ -46,20 +46,24 @@ public partial class InputContext {
 //------------------------------------------------------------------------------
 public partial class InputEntity {
 
-    public InputComponent input { get { return (InputComponent)GetComponent(InputComponentsLookup.Input); } }
+    public Sources.Components.InputComponent input { get { return (Sources.Components.InputComponent)GetComponent(InputComponentsLookup.Input); } }
     public bool hasInput { get { return HasComponent(InputComponentsLookup.Input); } }
 
-    public void AddInput(UnityEngine.Vector3 newValue) {
+    public void AddInput(UnityEngine.Vector3 newMovement, bool newShootPressed, bool newPauseButtonPressed) {
         var index = InputComponentsLookup.Input;
-        var component = (InputComponent)CreateComponent(index, typeof(InputComponent));
-        component.Value = newValue;
+        var component = (Sources.Components.InputComponent)CreateComponent(index, typeof(Sources.Components.InputComponent));
+        component.Movement = newMovement;
+        component.ShootPressed = newShootPressed;
+        component.PauseButtonPressed = newPauseButtonPressed;
         AddComponent(index, component);
     }
 
-    public void ReplaceInput(UnityEngine.Vector3 newValue) {
+    public void ReplaceInput(UnityEngine.Vector3 newMovement, bool newShootPressed, bool newPauseButtonPressed) {
         var index = InputComponentsLookup.Input;
-        var component = (InputComponent)CreateComponent(index, typeof(InputComponent));
-        component.Value = newValue;
+        var component = (Sources.Components.InputComponent)CreateComponent(index, typeof(Sources.Components.InputComponent));
+        component.Movement = newMovement;
+        component.ShootPressed = newShootPressed;
+        component.PauseButtonPressed = newPauseButtonPressed;
         ReplaceComponent(index, component);
     }
 

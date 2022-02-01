@@ -1,6 +1,9 @@
 ﻿using Entitas;
 
-[Game]
-public sealed class DestroyedComponent : IComponent
+namespace Sources.Components
 {
+    [Game]
+    public sealed class DestroyedComponent : IComponent
+    {
+    }
 }

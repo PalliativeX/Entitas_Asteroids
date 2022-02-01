@@ -12,7 +12,7 @@ public partial class GameContext {
     public GameSetupComponent gameSetup { get { return gameSetupEntity.gameSetup; } }
     public bool hasGameSetup { get { return gameSetupEntity != null; } }
 
-    public GameEntity SetGameSetup(GameSetup newValue) {
+    public GameEntity SetGameSetup(Configs.GameSetup newValue) {
         if (hasGameSetup) {
             throw new Entitas.EntitasException("Could not set GameSetup!\n" + this + " already has an entity with GameSetupComponent!",
                 "You should check if the context already has a gameSetupEntity before setting it or use context.ReplaceGameSetup().");
@@ -22,7 +22,7 @@ public partial class GameContext {
         return entity;
     }
 
-    public void ReplaceGameSetup(GameSetup newValue) {
+    public void ReplaceGameSetup(Configs.GameSetup newValue) {
         var entity = gameSetupEntity;
         if (entity == null) {
             entity = SetGameSetup(newValue);
@@ -49,14 +49,14 @@ public partial class GameEntity {
     public GameSetupComponent gameSetup { get { return (GameSetupComponent)GetComponent(GameComponentsLookup.GameSetup); } }
     public bool hasGameSetup { get { return HasComponent(GameComponentsLookup.GameSetup); } }
 
-    public void AddGameSetup(GameSetup newValue) {
+    public void AddGameSetup(Configs.GameSetup newValue) {
         var index = GameComponentsLookup.GameSetup;
         var component = (GameSetupComponent)CreateComponent(index, typeof(GameSetupComponent));
         component.value = newValue;
         AddComponent(index, component);
     }
 
-    public void ReplaceGameSetup(GameSetup newValue) {
+    public void ReplaceGameSetup(Configs.GameSetup newValue) {
         var index = GameComponentsLookup.GameSetup;
         var component = (GameSetupComponent)CreateComponent(index, typeof(GameSetupComponent));
         component.value = newValue;

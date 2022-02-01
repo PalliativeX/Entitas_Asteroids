@@ -8,5 +8,5 @@
 //------------------------------------------------------------------------------
 [Entitas.CodeGeneration.Attributes.DontGenerate(false)]
 public sealed class GameSetupComponent : Entitas.IComponent {
-    public GameSetup value;
+    public Configs.GameSetup value;
 }
