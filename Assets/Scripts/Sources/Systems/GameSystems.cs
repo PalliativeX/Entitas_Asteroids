@@ -6,14 +6,14 @@ namespace Sources.Systems
 {
     public sealed class GameSystems : Feature
     {
-        public GameSystems(Contexts contexts, ILogService logService, IInputService inputService)
+        public GameSystems(Contexts contexts)
         {
             Add(new InitializePlayerSystem(contexts));
             Add(new InstantiateViewSystem(contexts));
             Add(new InitializeAsteroidsSystem(contexts));
             Add(new InitializePauseSystem(contexts));
 
-            Add(new HandleDebugLogMessageSystem(contexts, logService));
+            Add(new HandleDebugLogMessageSystem(contexts));
 
             Add(new ScoreSystem(contexts));
 
@@ -22,7 +22,7 @@ namespace Sources.Systems
             Add(new RotateLaserSystem(contexts));
 
             Add(new PauseSystem(contexts));
-            Add(new InputSystem(contexts, inputService));
+            Add(new InputSystem(contexts));
             Add(new ShootSystem(contexts));
 
             Add(new RotatePlayerSystem(contexts));

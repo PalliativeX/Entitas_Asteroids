@@ -5,11 +5,11 @@ namespace Sources.Systems.Logging
 {
     public class HandleDebugLogMessageSystem : ReactiveSystem<GameEntity>
     {
-        private readonly ILogService _logService;
-
-        public HandleDebugLogMessageSystem(Contexts contexts, ILogService logService) : base(contexts.game)
+        private readonly Contexts _contexts;
+        
+        public HandleDebugLogMessageSystem(Contexts contexts) : base(contexts.game)
         {
-            _logService = logService;
+            _contexts = contexts;
         }
 
         protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
@@ -26,7 +26,7 @@ namespace Sources.Systems.Logging
         {
             foreach (GameEntity entity in entities)
             {
-                _logService.LogMessage(entity.debugLog.Message);
+                _contexts.meta.logService.Instance.LogMessage(entity.debugLog.Message);
                 entity.isDestroyed = true;
             }
         }

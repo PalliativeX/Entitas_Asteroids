@@ -1,5 +1,6 @@
 using Configs;
 using Entitas;
+using Sources.Services;
 using Sources.Systems;
 using Sources.Systems.InputLogic;
 using Sources.Systems.Logging;
@@ -12,15 +13,21 @@ namespace Views
         public GameSetup GameSetup;
     
         private Systems _systems;
-    
+        private ServiceRegistrationSystems _registrationSystems;
+        private Services _services;
+
         private void Start()
         {
             Contexts contexts = Contexts.sharedInstance;
 
             contexts.game.SetGameSetup(GameSetup);
-        
-            _systems = new GameSystems(contexts, new UnityDebugLogService(), new UnityInputService());
-        
+
+            _services = new Services(new UnityInputService(), new UnityDebugLogService());
+            
+            _registrationSystems = new ServiceRegistrationSystems(contexts, _services);
+            _registrationSystems.Initialize();
+            
+            _systems = new GameSystems(contexts);
             _systems.Initialize();
         }
 
