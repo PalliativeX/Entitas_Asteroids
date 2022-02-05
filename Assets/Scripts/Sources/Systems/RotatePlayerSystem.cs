@@ -1,5 +1,6 @@
 ﻿using Entitas;
 using UnityEngine;
+using Views;
 
 namespace Sources.Systems
 {
@@ -15,10 +16,10 @@ namespace Sources.Systems
         public void Execute()
         {
             float input = _contexts.input.input.Movement.x;
-            Transform playerTransform = _contexts.game.playerEntity.view.Value.transform;
-            Vector3 playerRotation = playerTransform.rotation.eulerAngles;
-            playerRotation.z -= input * _contexts.game.gameSetup.value.RotationSpeed * Time.deltaTime;
-            playerTransform.rotation = Quaternion.Euler(playerRotation);
+            IViewController playerTransform = _contexts.game.playerEntity.view.Value;
+            Vector3 playerRotation = playerTransform.RotationEuler;
+            playerRotation.z -= input * _contexts.game.gameSetup.value.RotationSpeed * _contexts.meta.timeService.Instance.GetDeltaTime();
+            playerTransform.RotationEuler = playerRotation;
         }
     }
 }

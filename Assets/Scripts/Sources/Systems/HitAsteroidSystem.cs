@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Entitas;
 using UnityEngine;
+using Views;
 
 namespace Sources.Systems
 {
@@ -27,12 +28,12 @@ namespace Sources.Systems
         {
             foreach (GameEntity entity in entities)
             {
-                GameObject first = entity.collision.First;
-                GameObject second = entity.collision.Second;
-
-                var firstEntity = _contexts.game.GetEntitiesWithView(first).SingleEntity();
-                var secondEntity = _contexts.game.GetEntitiesWithView(second).SingleEntity();
-
+                IViewController first = entity.collision.First;
+                IViewController second = entity.collision.Second;
+                
+                var firstEntity = first.Entity;
+                var secondEntity = second.Entity;
+                
                 if (secondEntity.asteroid.Level > 0)
                 {
                     for (int i = 0; i < 2; i++)
@@ -40,10 +41,10 @@ namespace Sources.Systems
                         GameEntity newEntity = _contexts.game.CreateEntity();
                         newEntity.AddAsteroid(secondEntity.asteroid.Level - 1);
                         newEntity.AddInitialPosition(
-                            second.transform.position + new Vector3(Random.Range(-0.05f, 0.05f), Random.Range(-0.05f, 0.05f), 0f));
+                            second.Position + new Vector3(Random.Range(-0.05f, 0.05f), Random.Range(-0.05f, 0.05f), 0f));
                     }
                 }
-
+                
                 firstEntity.isDestroyed = true;
                 secondEntity.isDestroyed = true;
             }

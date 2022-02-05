@@ -8,8 +8,8 @@ namespace Sources.Systems
     {
         public GameSystems(Contexts contexts)
         {
+            Add(new LoadAssetSystem(contexts));
             Add(new InitializePlayerSystem(contexts));
-            Add(new InstantiateViewSystem(contexts));
             Add(new InitializeAsteroidsSystem(contexts));
             Add(new InitializePauseSystem(contexts));
 

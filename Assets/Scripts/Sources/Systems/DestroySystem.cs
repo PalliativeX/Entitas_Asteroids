@@ -2,6 +2,7 @@
 using Entitas;
 using Entitas.Unity;
 using UnityEngine;
+using Views;
 
 namespace Sources.Systems
 {
@@ -30,11 +31,10 @@ namespace Sources.Systems
             {
                 if (entity.hasView)
                 {
-                    GameObject view = entity.view.Value;
-                    view.Unlink();
-                    Object.Destroy(view);
+                    IViewController view = entity.view.Value;
+                    view.DestroyView();
                 }
-            
+                
                 entity.Destroy();
             }
         }

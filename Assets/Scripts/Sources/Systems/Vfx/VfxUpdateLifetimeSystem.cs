@@ -27,7 +27,7 @@ namespace Sources.Systems.Vfx
         {
             foreach (GameEntity entity in entities)
             {
-                float newLifetimeLeft = entity.vfx.DurationLeft - Time.deltaTime;
+                float newLifetimeLeft = entity.vfx.DurationLeft - _contexts.meta.timeService.Instance.GetDeltaTime();
                 entity.ReplaceVfx(newLifetimeLeft);
 
                 if (newLifetimeLeft <= 0f)

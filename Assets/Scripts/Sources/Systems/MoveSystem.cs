@@ -1,5 +1,6 @@
 ﻿using Entitas;
 using UnityEngine;
+using Views;
 
 namespace Sources.Systems
 {
@@ -19,13 +20,13 @@ namespace Sources.Systems
         {
             foreach (GameEntity entity in _group)
             {
-                GameObject view = entity.view.Value;
+                IViewController view = entity.view.Value;
                 Vector3 acceleration = entity.acceleration.Value;
-                Vector3 position = view.transform.position;
-
-                position += acceleration * Time.deltaTime;
-
-                view.transform.position = position;
+                Vector3 position = view.Position;
+                
+                position += acceleration * _contexts.meta.timeService.Instance.GetDeltaTime();
+                
+                entity.view.Value.Position = position;
             }
         }
     }

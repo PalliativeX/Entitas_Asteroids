@@ -7,9 +7,9 @@ namespace Configs
     [CreateAssetMenu(fileName = "GameSetup", menuName = "ScriptableObjects/GameSetup", order = 0)]
     public class GameSetup : ScriptableObject
     {
-        public GameObject Player;
-        public GameObject Laser;
-        public GameObject HitParticleEffect;
+        public string PlayerPath;
+        public string LaserPath;
+        public string HitParticleEffectPath;
     
         public float RotationSpeed = 180f;
         public float PlayerMovementSpeed = 5f;
@@ -18,10 +18,10 @@ namespace Configs
 
         public float AsteroidHitVfxLifetime = 2f;
 
-        public GameObject[] Bigs;
-        public GameObject[] Mediums;
-        public GameObject[] Smalls;
-        public GameObject[] Tinys;
+        public string[] Bigs;
+        public string[] Mediums;
+        public string[] Smalls;
+        public string[] Tinys;
     
     }
 }

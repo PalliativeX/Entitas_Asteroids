@@ -1,12 +1,13 @@
 ﻿using Entitas;
 using UnityEngine;
+using Views;
 
 namespace Sources.Components
 {
     [Game]
     public sealed class CollisionComponent : IComponent
     {
-        public GameObject First;
-        public GameObject Second;
+        public IViewController First;
+        public IViewController Second;
     }
 }

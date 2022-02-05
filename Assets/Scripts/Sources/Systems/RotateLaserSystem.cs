@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Entitas;
 using UnityEngine;
+using Views;
 
 namespace Sources.Systems
 {
@@ -28,10 +29,10 @@ namespace Sources.Systems
         {
             foreach (GameEntity entity in entities)
             {
-                Transform view = entity.view.Value.transform;
+                IViewController view = entity.view.Value;
                 Vector3 acceleration = entity.acceleration.Value;
-
-                view.transform.up = acceleration.normalized;
+                
+                view.UpVector = acceleration.normalized;
             }
         }
     }

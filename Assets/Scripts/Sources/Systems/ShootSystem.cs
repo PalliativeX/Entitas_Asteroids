@@ -1,13 +1,12 @@
 ﻿using Configs;
 using Entitas;
 using UnityEngine;
+using Views;
 
 namespace Sources.Systems
 {
     public sealed class ShootSystem : IExecuteSystem
     {
-        private const string FireButtonKey = "Fire";
-    
         private readonly Contexts _contexts;
 
         public ShootSystem(Contexts contexts)
@@ -22,12 +21,12 @@ namespace Sources.Systems
                 GameEntity entity = _contexts.game.CreateEntity();
                 GameSetup setup = _contexts.game.gameSetup.value;
 
-                Transform playerTransform = _contexts.game.playerEntity.view.Value.transform;
-                Vector3 playerForward = playerTransform.up;
-            
-                entity.AddResource(_contexts.game.gameSetup.value.Laser);
+                IViewController playerView = _contexts.game.playerEntity.view.Value;
+                Vector3 playerForward = playerView.UpVector;
+
+                entity.AddAsset(_contexts.game.gameSetup.value.LaserPath);
                 entity.AddAcceleration(playerForward * setup.LaserSpeed);
-                entity.AddInitialPosition(playerTransform.position);
+                entity.AddInitialPosition(playerView.Position);
                 entity.isLaser = true;
             }
         }

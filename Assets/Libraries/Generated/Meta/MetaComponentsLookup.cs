@@ -6,20 +6,29 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using Sources.Components.ServiceComponents;
+
 public static class MetaComponentsLookup {
 
     public const int InputService = 0;
     public const int LogService = 1;
+    public const int TimeService = 2;
+    public const int ViewService = 3;
 
-    public const int TotalComponents = 2;
+    public const int TotalComponents = 4;
 
     public static readonly string[] componentNames = {
         "InputService",
-        "LogService"
+        "LogService",
+        "TimeService",
+        "ViewService"
     };
 
     public static readonly System.Type[] componentTypes = {
         typeof(InputServiceComponent),
-        typeof(LogServiceComponent)
+        typeof(LogServiceComponent),
+        typeof(TimeServiceComponent),
+        typeof(ViewServiceComponent)
     };
 }

@@ -16,7 +16,7 @@ namespace Sources.Systems
         {
             GameEntity entity = _contexts.game.CreateEntity();
             entity.isPlayer = true;
-            entity.AddResource(_contexts.game.gameSetup.value.Player);
+            entity.AddAsset(_contexts.game.gameSetup.value.PlayerPath);
             entity.AddInitialPosition(Vector3.zero);
             entity.AddAcceleration(Vector3.zero);
         }

@@ -12,15 +12,15 @@ public static class GameComponentsLookup {
     public const int AnyScoreListener = 1;
     public const int GameSetup = 2;
     public const int Acceleration = 3;
-    public const int Asteroid = 4;
-    public const int Collision = 5;
-    public const int DebugLog = 6;
-    public const int Destroyed = 7;
-    public const int InitialPosition = 8;
-    public const int Laser = 9;
-    public const int Pause = 10;
-    public const int Player = 11;
-    public const int Resource = 12;
+    public const int Asset = 4;
+    public const int Asteroid = 5;
+    public const int Collision = 6;
+    public const int DebugLog = 7;
+    public const int Destroyed = 8;
+    public const int InitialPosition = 9;
+    public const int Laser = 10;
+    public const int Pause = 11;
+    public const int Player = 12;
     public const int Score = 13;
     public const int Vfx = 14;
     public const int View = 15;
@@ -32,6 +32,7 @@ public static class GameComponentsLookup {
         "AnyScoreListener",
         "GameSetup",
         "Acceleration",
+        "Asset",
         "Asteroid",
         "Collision",
         "DebugLog",
@@ -40,7 +41,6 @@ public static class GameComponentsLookup {
         "Laser",
         "Pause",
         "Player",
-        "Resource",
         "Score",
         "Vfx",
         "View"
@@ -51,6 +51,7 @@ public static class GameComponentsLookup {
         typeof(AnyScoreListenerComponent),
         typeof(GameSetupComponent),
         typeof(Sources.Components.AccelerationComponent),
+        typeof(Sources.Components.AssetComponent),
         typeof(Sources.Components.AsteroidComponent),
         typeof(Sources.Components.CollisionComponent),
         typeof(Sources.Components.DebugLogComponent),
@@ -59,7 +60,6 @@ public static class GameComponentsLookup {
         typeof(Sources.Components.LaserComponent),
         typeof(Sources.Components.PauseComponent),
         typeof(Sources.Components.PlayerComponent),
-        typeof(Sources.Components.ResourceComponent),
         typeof(Sources.Components.ScoreComponent),
         typeof(Sources.Components.VfxComponent),
         typeof(Sources.Components.ViewComponent)

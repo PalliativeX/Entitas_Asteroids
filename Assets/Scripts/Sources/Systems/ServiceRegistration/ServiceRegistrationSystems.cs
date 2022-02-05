@@ -1,11 +1,13 @@
-﻿using Entitas;
-using Sources.Services;
-
-public class ServiceRegistrationSystems : Feature
+﻿namespace Sources.Systems.ServiceRegistration
 {
-    public ServiceRegistrationSystems(Contexts contexts, Services services)
+    public class ServiceRegistrationSystems : Feature
     {
-        Add(new RegisterInputServiceSystem(contexts, services.Input));
-        Add(new RegisterLogServiceSystem(contexts, services.Log));
+        public ServiceRegistrationSystems(Contexts contexts, Services.Services services)
+        {
+            Add(new RegisterInputServiceSystem(contexts, services.Input));
+            Add(new RegisterLogServiceSystem(contexts, services.Log));
+            Add(new RegisterTimeServiceSystem(contexts, services.Time));
+            Add(new RegisterViewServiceSystem(contexts, services.View));
+        }
     }
 }

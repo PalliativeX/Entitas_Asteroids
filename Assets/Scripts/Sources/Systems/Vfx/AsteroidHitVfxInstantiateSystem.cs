@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Entitas;
 using UnityEngine;
+using Views;
 
 namespace Sources.Systems.Vfx
 {
@@ -27,11 +28,11 @@ namespace Sources.Systems.Vfx
         {
             foreach (GameEntity entity in entities)
             {
-                GameObject second = entity.collision.Second;
+                IViewController second = entity.collision.Second;
             
                 GameEntity vfxEntity = _contexts.game.CreateEntity();
-                vfxEntity.AddResource(_contexts.game.gameSetup.value.HitParticleEffect);
-                vfxEntity.AddInitialPosition(second.transform.position);
+                vfxEntity.AddAsset(_contexts.game.gameSetup.value.HitParticleEffectPath);
+                vfxEntity.AddInitialPosition(second.Position);
                 vfxEntity.AddVfx(_contexts.game.gameSetup.value.AsteroidHitVfxLifetime);
             }
         }

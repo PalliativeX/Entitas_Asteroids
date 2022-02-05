@@ -17,7 +17,7 @@ namespace Sources.Systems
 
         protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
         {
-            return context.CreateCollector(GameMatcher.Asteroid);
+            return context.CreateCollector(GameMatcher.Asteroid.Added());
         }
 
         protected override bool Filter(GameEntity entity)
@@ -30,9 +30,9 @@ namespace Sources.Systems
             GameSetup setup = _contexts.game.gameSetup.value;
             foreach (GameEntity entity in entities)
             {
-                entity.AddResource(MapAsteroidLevelToResource(entity.asteroid.Level, setup));
+                entity.AddAsset(MapAsteroidLevelToResource(entity.asteroid.Level, setup));
             
-                float speed = _contexts.game.gameSetup.value.AsteroidSpeed;
+                float speed = setup.AsteroidSpeed;
                 float randomAngle = Random.Range(0f, 2f);
                 entity.AddAcceleration(new Vector3(
                     speed * Mathf.Cos(randomAngle),
@@ -40,7 +40,7 @@ namespace Sources.Systems
             }
         }
 
-        private GameObject MapAsteroidLevelToResource(int level, GameSetup setup)
+        private string MapAsteroidLevelToResource(int level, GameSetup setup)
         {
             switch (level)
             {

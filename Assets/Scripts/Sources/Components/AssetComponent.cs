@@ -4,8 +4,8 @@ using UnityEngine;
 namespace Sources.Components
 {
     [Game]
-    public sealed class ResourceComponent : IComponent
+    public sealed class AssetComponent : IComponent
     {
-        public GameObject Prefab;
+        public string Value;
     }
 }

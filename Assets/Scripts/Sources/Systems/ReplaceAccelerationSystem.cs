@@ -1,5 +1,6 @@
 ﻿using Entitas;
 using UnityEngine;
+using Views;
 
 namespace Sources.Systems
 {
@@ -16,12 +17,12 @@ namespace Sources.Systems
         {
             float input = _contexts.input.input.Movement.y;
             GameEntity player = _contexts.game.playerEntity;
-            Transform playerTransform = player.view.Value.transform;
-            Vector3 forward = playerTransform.up;
+            IViewController view = player.view.Value;
+            Vector3 forward = view.UpVector;
             float movementSpeed = _contexts.game.gameSetup.value.PlayerMovementSpeed;
-
+            
             Vector3 acceleration = player.acceleration.Value;
-            player.ReplaceAcceleration(acceleration + input * forward * movementSpeed * Time.deltaTime);
+            player.ReplaceAcceleration(acceleration + input * forward * movementSpeed * _contexts.meta.timeService.Instance.GetDeltaTime());
         }
     }
 }
